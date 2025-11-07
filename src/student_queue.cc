@@ -19,7 +19,15 @@ void StudentQueue::Enqueue(const Student& student) {
 }
 
 void StudentQueue::Dequeue() {
-  // TODO
+  if (head_ == nullptr) {
+    return;
+  }
+  Node* to_delete = head_;
+  head_ = head_->next_;
+  delete to_delete;
+  if (head_ == nullptr) {
+    tail_ = nullptr;
+  }
 }
 
 void StudentQueue::DeepCopy(const StudentQueue& other) {
