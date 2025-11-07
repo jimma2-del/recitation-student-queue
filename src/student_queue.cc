@@ -21,7 +21,8 @@ void StudentQueue::Enqueue(const Student& student) {
 void StudentQueue::Dequeue() {
   // TODO
 }
-StudentQueue::StudentQueue(const StudentQueue& other) {
+
+void StudentQueue::DeepCopy(const StudentQueue& other) {
   if (other.head_ == nullptr) return;
 
   head_ = new Node(other.head_->student_);
@@ -37,8 +38,15 @@ StudentQueue::StudentQueue(const StudentQueue& other) {
 
   tail_ = cur_copy;
 }
+
+StudentQueue::StudentQueue(const StudentQueue& other) {
+  DeepCopy(other);
+}
+
 StudentQueue& StudentQueue::operator=(const StudentQueue& other) {
-  // TODO
+  if (&other == this) return *this;
+  Clear();
+  DeepCopy(other);
   return *this;
 }
 StudentQueue::~StudentQueue() { Clear(); }

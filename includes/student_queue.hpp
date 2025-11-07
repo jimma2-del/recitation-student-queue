@@ -20,6 +20,7 @@ private:
   Node* head_ = nullptr;
   Node* tail_ = nullptr;
   void Clear();
+  void DeepCopy(const StudentQueue& other);
 };
 
 #endif
