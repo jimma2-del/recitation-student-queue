@@ -10,6 +10,20 @@ double Student::GetAttendancePercentage() const {
   return attendancePercentage_;
 }
 bool Student::operator<(const Student& other) const {
-  // TODO
+  if (attendancePercentage_ < other.GetAttendancePercentage()) {
+    return true;
+  }
+  if (attendancePercentage_ > other.GetAttendancePercentage()) {
+    return false;
+  }
+
+  if (other.GetGPA() > gpa_) {
+    return true;
+  }
+  if (gpa_ > other.GetGPA()) {
+    return false;
+  }
   return true;
+}
+
 }
