@@ -60,8 +60,16 @@ StudentQueue& StudentQueue::operator=(const StudentQueue& other) {
 StudentQueue::~StudentQueue() { Clear(); }
 
 void StudentQueue::Clear() {
-  // TODO
+  Node* current = head_;
+  while (current != nullptr) {
+    Node* next_node = current->next_;
+    delete current;
+    current = next_node;
+  }
+  head_ = nullptr;
+  tail_ = nullptr;
 }
+
 Student StudentQueue::Front() const {
   if (head_ == nullptr) {
     throw std::runtime_error("Queue is empty");
